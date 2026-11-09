@@ -1,45 +1,71 @@
-# Aula 002 — HDD, SSD, NVMe e Mídia Flash
+# Fase 2 — Discos: HDD, SSD, NVMe e Mídia Flash
 
-## 1. HDD — Hard Disk Drive
+## 1. HDD
 
-O HDD armazena dados em pratos magnéticos que giram. As trilhas são caminhos circulares nas superfícies, e os setores são divisões utilizadas para armazenar dados.
+O HDD é um disco rígido mecânico que utiliza magnetismo para armazenar dados.
 
-Quando um arquivo é apagado, o sistema de arquivos normalmente marca o espaço como disponível. O conteúdo pode permanecer no disco até ser sobrescrito.
+- Pratos: superfícies magnéticas.
+- Trilhas: círculos concêntricos.
+- Setores: divisões utilizadas para organizar os dados.
+- Cabeça de leitura e escrita: lê e grava informações.
 
-## 2. SSD — Solid State Drive
+Quando um ficheiro é apagado, os dados podem permanecer nos setores até serem sobrescritos.
 
-O SSD utiliza memória flash NAND para armazenar dados, sem pratos magnéticos giratórios.
+## 2. SSD e NAND
 
-A recuperação de arquivos apagados depende de vários fatores, como o funcionamento do controlador, o uso do TRIM e as operações realizadas após a exclusão.
+O SSD utiliza memória flash NAND e não possui partes mecânicas.
+
+- Lê e grava dados em páginas.
+- Apaga dados em blocos.
+- Mantém informações sem energia elétrica.
+
+As células NAND podem ser SLC, MLC, TLC ou QLC, conforme a quantidade de bits armazenados por célula.
 
 ## 3. NVMe
 
-NVMe é um protocolo de comunicação usado normalmente por SSDs conectados por PCIe. Ele permite que o sistema operacional se comunique com o dispositivo de armazenamento.
+NVMe é um protocolo de comunicação utilizado principalmente por SSDs ligados através de PCIe.
+
+Não é sinónimo de SSD. Existem também SSDs SATA.
 
 ## 4. TRIM
 
-TRIM permite que o sistema operacional informe ao SSD quais blocos lógicos não precisam mais preservar os dados.
+É uma notificação enviada pelo sistema operativo ao SSD, indicando que determinados blocos lógicos já não contêm dados necessários.
 
-O controlador pode processar esses blocos para reutilização, o que pode dificultar ou impossibilitar a recuperação de dados apagados.
+Isso permite ao dispositivo tratar essas áreas como disponíveis para reutilização.
 
-## 5. Garbage collection
+## 5. Wear leveling
 
-É um processo interno do controlador do SSD que reorganiza dados válidos e libera blocos para novas gravações.
+Técnica utilizada para distribuir operações de escrita e apagamento entre os blocos NAND, evitando desgaste excessivo de determinadas células.
 
-## 6. Wear leveling
+## 6. Garbage collection
 
-É uma técnica que distribui as gravações entre as células de memória para reduzir o desgaste excessivo de determinadas regiões.
+Processo interno do SSD que reorganiza páginas válidas e prepara blocos para futuras gravações.
 
-## 7. Importância para a perícia digital
+## 7. Pendrives e cartões SD
 
-Um arquivo apagado de um HDD pode continuar recuperável enquanto seus dados não forem sobrescritos.
+Utilizam memória flash não volátil. Podem conter documentos, fotografias, vídeos e outros vestígios digitais.
 
-Em um SSD com TRIM, os dados podem se tornar inacessíveis devido ao processamento interno do dispositivo. Por isso, o perito deve preservar a evidência, documentar os procedimentos e evitar conclusões absolutas sem suporte técnico.
+## 8. Importância para a perícia digital
 
-## O que aprendi
+Num HDD, os dados apagados podem permanecer até serem sobrescritos.
 
-- Diferenciar HDD de SSD.
-- Explicar o que são trilhas e setores.
-- Entender o papel da memória NAND e do protocolo NVMe.
-- Explicar TRIM, garbage collection e wear leveling.
-- Compreender por que a recuperação de arquivos apagados depende do dispositivo e de seu estado.
+Num SSD com TRIM, os dados podem ser descartados pelo controlador e posteriormente apagados fisicamente durante a gestão interna da memória.
+
+Por isso, um ficheiro apagado pode tornar-se irrecuperável.
+
+## 9. Ferramentas
+
+Linux:
+- lsblk
+- fdisk -l
+
+Windows:
+- fsutil behavior query DisableDeleteNotify
+
+## 10. Conclusão
+
+O perito digital precisa compreender como cada tecnologia armazena, apaga e reutiliza dados.
+
+A recuperação de ficheiros apagados depende da tecnologia, do estado do dispositivo, do sistema de ficheiros e das operações realizadas após a eliminação.
+
+**Critério de domínio:** explicar por que um ficheiro apagado num SSD com TRIM pode tornar-se irrecuperável, mesmo sem uma sobrescrita convencional pelo utilizador.
