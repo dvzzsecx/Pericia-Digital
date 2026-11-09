@@ -58,6 +58,7 @@ Por isso, um ficheiro apagado pode tornar-se irrecuperável.
 Linux:
 - lsblk
 - fdisk -l
+- lsblk -o NAME,SIZE,TYPE,FSTYPE,PTTYPE,START,MOUNTPOINTS
 
 Windows:
 - fsutil behavior query DisableDeleteNotify
